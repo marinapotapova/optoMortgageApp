@@ -103,8 +103,12 @@ section {
     color: #fff;
     
 }
-
-
+/*-------------------------------*/
+/*features*/
+/*-------------------------------*/
+.section-features .long-copy {
+    margin-bottom: 30px;
+}
 /*-------------------------------*/
 /*headings*/
 /*-------------------------------*/
@@ -170,9 +174,9 @@ h3{
 
 .logo{
     height: :100px;
-    width: 100px;
+    width: 300px;
     float: left;
-    margin-top: 20px;
+    margin-top: 10px;
     
     
 }

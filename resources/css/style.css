@@ -70,7 +70,8 @@ section {
 /*-------------------------------*/
 
 .btn:link,
-.btn:visited{
+.btn:visited,
+input[type=submit]{
     display: inline-block;
     padding: 10px 30px;
     font-weight: 300;
@@ -81,7 +82,8 @@ section {
 }
 
 .btn-full:link,
-.btn-full:visited {
+.btn-full:visited,
+input[type=submit]{
     background: #e67e22;
     border: 1px solid #e67e22;
     color: #fff;
@@ -95,11 +97,15 @@ section {
     
 }
 .btn:hover, 
-.btn:active {
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
     background: #cf6d17;
 }
 .btn-full:hover,
-.btn-full:active{
+.btn-full:active,
+
+{
    
     border: 1px solid #cf6d17;
     
@@ -261,7 +267,10 @@ h3{
     margin-right: 25px;
     
 }
-
+btn-app:link,
+btn-app:visited {
+    border: 0;
+}
 
 .btn-app img {
     height: 50px;
@@ -269,3 +278,29 @@ h3{
     margin-right: 10px;
     
 }
+
+/*-------------------------------*/
+/*contact form*/
+/*-------------------------------*/
+
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+}
+input[type=text], input[type=email], select, textarea{
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+}
+textarea{
+    height: 100px;
+}
+*:focus{
+    outline-color: #e67e22;
+}
+

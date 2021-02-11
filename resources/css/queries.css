@@ -72,7 +72,7 @@
     .steps-box:first-child {
         text-align: center;
     }
-    main-nav { display: none;}
+    .main-nav { display: none;}
 }
 
 

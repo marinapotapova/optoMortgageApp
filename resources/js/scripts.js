@@ -22,7 +22,10 @@ $(document).ready(function() {
         $('html, body').animate({scrollTop: $('.js--section--features').offset().top}, 1000);
         
     });
-    
+    $('.js--logo').click(function() {
+        $('html, body').animate({scrollTop: $().offset().top}, 1000);
+        
+    });
     
      /*smooth scrolling*/
     

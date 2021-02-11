@@ -187,14 +187,19 @@ h3{
 }
 
 
-.logo{
-    height: :100px;
-    width: 300px;
+.logo
+{
+    height: 100px;
+    width: auto;
     float: left;
-    margin-top: 20px;
+    margin-top: 15px;
     
     
 }
+
+/*-------------------------------*/
+/*main nav*/
+/*-------------------------------*/
 .main-nav{
     float: right;
     list-style: none;
@@ -221,6 +226,36 @@ h3{
     border-bottom: 2px solid #e67e22;
     
 }
+/*-------------------------------*/
+/*sticky nav*/
+/*-------------------------------*/
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 26, 26, 0.98);
+    z-index: 9999;
+    
+}
+.sticky .main-nav li a:link, 
+.sticky .main-nav li a:visited {
+    padding: 4px 0;
+    
+   
+}
+.sticky .main-nav{
+    
+    margin-top: 25px;
+}
+.sticky .logo {
+      height: 70px;
+    width: auto;
+    float: left;
+    margin-top: 4px;
+}
+
 /*-------------------------------*/
 /*how it works*/
 /*-------------------------------*/

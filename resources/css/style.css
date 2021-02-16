@@ -257,6 +257,20 @@ h3{
 }
 
 /*-------------------------------*/
+/*mobile navigation*/
+/*-------------------------------*/
+.mobile-nav-icon {
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    display: none;
+}
+.mobile-nav-icon ion-icon {
+    font-size: 200%;
+    color: #fff;
+}
+
+/*-------------------------------*/
 /*how it works*/
 /*-------------------------------*/
 
@@ -374,4 +388,11 @@ footer p{
     text-align: center;
     font-size: 90%;
     margin-top: 15px;
+}
+/*-------------------------------*/
+/*animations*/
+/*-------------------------------*/
+.js--wp-1, .js--wp-2 {
+    opacity: 0;
+    animation-duration: 1s;
 }

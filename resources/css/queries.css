@@ -19,17 +19,19 @@
     width: 80%;
     margin-left: 10%;  
     }
-    .steps-box{margin-top: 10px;}
+    .steps-box{margin-top: 10px;
+   }
     .steps-box:last-child {
         margin-top: 10px;
     }
     .works-step{
+        
         margin-bottom: 40px;
     }
     .works-step:last-child {
         margin-bottom: 60px;
     }
-    .app-screen  {width: 90%}
+    .app-screen  {width: 80%}
     .contact-form {
         width: 80%;
     }
@@ -53,11 +55,14 @@
     h1 {font-size: 180%}
     h2 {font-size: 140%}
     
-    
+    .works-step:first-child{
+        margin-bottom: 10px;
+    }
     .works-step{
-        margin-bottom: 20px;
+        margin-bottom: 30px;
     }
     .works-step:last-child {
+        margin-top: 20px;
         margin-bottom: 20px;
     }
     
@@ -73,6 +78,61 @@
         text-align: center;
     }
     .main-nav { display: none;}
+    
+    .mobile-nav-icon {
+        display: inline-block;
+        margin-top: 35px;
+    }
+    .main-nav {
+        float: left;
+        margin-top: 35px;
+        margin-left: 25px;
+    }
+    
+    .main-nav li {
+        display: block;
+        
+    }
+    .main-nav li a:link,
+    .main-nav li a:visited {
+        display: block;
+        border: 0;
+        padding: 10px 0;
+        font-size: 100%;
+        
+    }
+    .sticky .main-nav li a:link, 
+    .sticky .main-nav li a:visited {
+    padding: 10px 0;
+    
+   
+}
+.sticky .main-nav{
+    
+    margin-top: 10px;
+}
+
+.sticky .mobile-nav-icon {
+        margin-top:15px;;
+    }
+    
+    .sticky .logo {
+     
+    margin-top: 2px;
+    margin-right: -20px;
+        margin-left: -5px;
+        
+}
+    .logo
+{
+    height: 70px;
+    width: auto;
+    float: left;
+    margin-top: 15px;
+    
+    
+}
+   
 }
 
 

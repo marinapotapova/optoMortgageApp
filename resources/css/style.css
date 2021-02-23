@@ -134,6 +134,13 @@ header{
     height: 100vh;
 
 }
+header#calculator{
+    background-image: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(/resources/img/calculator-img.jpg);
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+
+}
 h1, h2, h3{
    
     font-weight: 300;

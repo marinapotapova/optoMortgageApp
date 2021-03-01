@@ -1,95 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head> 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="OptoMortgage calculate mortgage based on income and expenses">
-         
-        <link rel="stylesheet" type="text/css" href="./vendors/css/normalize.css">
-        <link rel="stylesheet" type="text/css" href="./vendors/css/grid.css">
-        <link rel="stylesheet" type="text/css" href="./vendors/css/ionicons.min.css">
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="OptoMortgage calculate mortgage based on income and expenses"
+    />
 
-        <link href="https://fonts.googleapis.com/css2family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" type="text/css" href="./resources/css/style.css">
-        <link rel="stylesheet" type="text/css" href="./resources/css/queries.css">
-        
+    <link rel="stylesheet" type="text/css" href="./vendors/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="./vendors/css/grid.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./vendors/css/ionicons.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
+    />
 
-        <link rel="apple-touch-icon" sizes="180x180" href="./resources/favicons/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="./resources/favicons/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="./resources/favicons/favicon-16x16.png">
-        <link rel="manifest" href="./resources/favicons/site.webmanifest">
-        <link rel="mask-icon" href="./resources/favicons/safari-pinned-tab.svg" color="#5bbad5">
-        <link rel="shortcut icon" href="./resources/favicons/favicon.ico">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="msapplication-config" content="./resources/favicons/browserconfig.xml">
-        <meta name="theme-color" content="#ffffff">
+    <link
+      href="https://fonts.googleapis.com/css2family=Lato:ital,wght@0,100;0,300;0,400;1,300&display=swap"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="./resources/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="./resources/css/queries.css" />
 
-        
-        
-        <title>OptoMortgage</title>
-    </head>
-    <body>
-        <header class="js--header" id="calculator"> 
-            <nav>
-                <div class="row">
-                   <a class="js--logo" href ="index.html"><img src="./resources/img/logo.png" alt="Loan logo" class="logo"></a>
-                    
-                    <ul class="main-nav js--main-nav">
-                        <li><a href ="#">Calculate your loan</a></li>
-                        <li><a href ="index.html#works">How it works</a></li>
-                        <li><a href ="index.html#contact">Contact us</a></li>
-                    </ul>
-                    <a class="mobile-nav-icon js--nav-icon"><ion-icon name="menu" class="ion-navicon-round"></ion-icon></a> 
-                   
-                    
-                </div>
-            </nav>
-        <div class="hero-text-box">
-          
-            
-            
-            </div></header>
-        
-        
-        
-        <footer>
-            <div class="row">
-                <div class="col span-1-of-2">
-                    <ul class="footer-nav">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">iOS App</a></li>
-                        <li><a href="#">Android App</a></li>
-                    </ul>
-            </div>
-            </div>
-            <div class="row"> 
-                <p>Copyright &copy; 2021 by OptoMortgage. All rights reserved.</p>
-            </div>
-        </footer>
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./resources/favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./resources/favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./resources/favicons/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./resources/favicons/site.webmanifest" />
+    <link
+      rel="mask-icon"
+      href="./resources/favicons/safari-pinned-tab.svg"
+      color="#5bbad5"
+    />
+    <link rel="shortcut icon" href="./resources/favicons/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#da532c" />
+    <meta
+      name="msapplication-config"
+      content="./resources/favicons/browserconfig.xml"
+    />
+    <meta name="theme-color" content="#ffffff" />
 
-<script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+    <title>OptoMortgage</title>
+  </head>
+  <body>
+    <header class="js--header" id="calculator-header">
+      <nav>
+        <div class="row">
+          <a class="js--logo" href="index.html"
+            ><img src="./resources/img/logo.png" alt="Loan logo" class="logo"
+          /></a>
 
-<script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+          <ul class="main-nav js--main-nav">
+            <li><a href="#">Calculate your loan</a></li>
+            <li><a href="index.html#works">How it works</a></li>
+            <li><a href="index.html#contact">Contact us</a></li>
+          </ul>
+          <a class="mobile-nav-icon js--nav-icon"
+            ><ion-icon name="menu" class="ion-navicon-round"></ion-icon
+          ></a>
+        </div>
+      </nav>
+    </header>
+    <section class="calculator-table">
+      <div class="scrollingtable">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="6">Inputs</th>
+              <th colspan="3">Down Payment</th>
+              <th colspan="5">Mortgage</th>
+              <th colspan="3">PMI</th>
+              <th colspan="2">Home Expenses</th>
+              <th colspan="5">Total</th>
+            </tr>
 
-   <script src="https://cdn.jsdelivr.net/npm/selectivizr2@1.0.9/selectivizr2.min.js"></script>
- <script src="./vendors/js/jquery.waypoints.min.js"></script>
-<script src="./resources/js/scripts.js"></script>
-        
-    
-    
-    </body>
+            <tr>
+              <td>Home Price</td>
+              <td>Credit Score</td>
+              <td>Interest Rate</td>
+              <td>Monthly Rent</td>
+              <td>Monthly Savings</td>
+              <td>Initial Budget</td>
+              <td>DP, %</td>
+              <td>DP, $</td>
+              <td>Mon Sav</td>
+              <td>Loan</td>
+              <td>LTV</td>
+              <td>Type</td>
+              <td>PMT</td>
+              <td>Extra</td>
+              <td>PMI Rate</td>
+              <td>PMI Monthly</td>
+              <td>PMI Payment</td>
+              <td>Property Taxes</td>
+              <td>Home Insurence</td>
+              <td>Monthly</td>
+              <td>Mortgage</td>
+              <td>Rent</td>
+              <td>S+M+R</td>
+              <td>Overpay</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>350000</td>
+              <td>740-759</td>
+              <td>2.75%</td>
+              <td>1350</td>
+              <td>2000</td>
+              <td>100000</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <footer>
+      <div class="row">
+        <div class="col span-1-of-2">
+          <ul class="footer-nav">
+            <li><a href="#">About us</a></li>
+            <li><a href="#">iOS App</a></li>
+            <li><a href="#">Android App</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row">
+        <p>Copyright &copy; 2021 by OptoMortgage. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/selectivizr2@1.0.9/selectivizr2.min.js"></script>
+    <script src="./vendors/js/jquery.waypoints.min.js"></script>
+    <script src="./resources/js/scripts.js"></script>
+  </body>
 </html>
-        
-        
-       
-
-
-
-
-
-
-
-

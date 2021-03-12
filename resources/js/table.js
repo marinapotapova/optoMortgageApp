@@ -57,7 +57,7 @@ function render() {
       "<td>" +
       x["Home Price"] +
       "</td>" +
-      "<td>" +
+      "<td class='creditScore'>" +
       x["Credit Score"] +
       "</td>" +
       "<td>" +
@@ -148,3 +148,23 @@ for (let i = 0; i < 4; i++) {
 render();
 
 console.log(TBL);
+
+function addDropDownScores() {
+  var target_cell = document.getElementsByClassName("creditScore");
+  console.log(target_cell);
+  var list = "";
+  for (let i = 0; i < target_cell.length; i++) {
+    list =
+      "<select>" +
+      '<option value=""disabled>Credit Score</option>' +
+      '<option value="700">700-719</option>' +
+      '<option value="720">720-739</option>' +
+      '<option value="740">740-759</option>' +
+      '<option value="760">760-779</option>' +
+      '<option value="780">780-800</option>' +
+      "</select>";
+    target_cell.item(i).innerHTML = list;
+    //target_cell.innerHTML = list;
+  }
+}
+console.log(addDropDownScores());

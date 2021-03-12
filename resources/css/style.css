@@ -410,9 +410,33 @@ th {
   margin-right: 20px;
 }
 
-.currency:before {
-  content: "$";
+/*-------------------------------*/
+/*dropDown*/
+/*-------------------------------*/
+
+.creditScore {
+  font-size: 15px;
+  display: inline-block;
+
+  width: 150px;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
 }
-.currency:after {
-  content: ".00";
+
+.creditScore::before {
+  position: absolute;
+
+  font-size: 15px;
+  background-color: transparent;
+}
+
+.creditScore.active::before {
+  transform: rotateX(-180deg);
+  background-color: transparent;
+}
+select > option {
+  background: transparent;
+  background-color: transparent;
+  color: black;
 }

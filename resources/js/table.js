@@ -57,7 +57,7 @@ function render() {
       "<td>" +
       x["Home Price"] +
       "</td>" +
-      "<td class='creditScore'>" +
+      "<td class='creditScore' id='score'>" +
       x["Credit Score"] +
       "</td>" +
       "<td>" +
@@ -147,7 +147,7 @@ for (let i = 0; i < 4; i++) {
 
 render();
 
-console.log(TBL);
+//console.log(TBL);
 
 function addDropDownScores() {
   var target_cell = document.getElementsByClassName("creditScore");
@@ -156,7 +156,7 @@ function addDropDownScores() {
   for (let i = 0; i < target_cell.length; i++) {
     list =
       "<select>" +
-      '<option value=""disabled>Credit Score</option>' +
+      '<option value="1">Credit Score</option>' +
       '<option value="700">700-719</option>' +
       '<option value="720">720-739</option>' +
       '<option value="740">740-759</option>' +
@@ -164,7 +164,13 @@ function addDropDownScores() {
       '<option value="780">780-800</option>' +
       "</select>";
     target_cell.item(i).innerHTML = list;
+    let mySelect = target_cell.item(i).firstChild;
+    console.log(mySelect);
+    mySelect.addEventListener("change", function () {
+      TBL[i]["Credit Score"] = this.value;
+      console.log(TBL);
+    });
     //target_cell.innerHTML = list;
   }
 }
-console.log(addDropDownScores());
+addDropDownScores();

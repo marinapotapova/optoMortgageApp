@@ -1,20 +1,6 @@
 "use strict";
 var TBL = []; //array of objects to store the table data
 
-// $("table#details tr").each(function () {
-//   var arrayOfThisRow = [];
-//   var tableData = $(this).find("td");
-//   var tableData = $(this).find("td");
-//   if (tableData.length > 0) {
-//     tableData.each(function () {
-//       arrayOfThisRow.push($(this).text());
-//     });
-//     TBL.push(arrayOfThisRow);
-//   }
-// });
-
-// alert(TBL);
-
 /*Get Header*/
 var xKey = [];
 $("#details thead td").each(function () {
@@ -24,19 +10,6 @@ $("#details thead td").each(function () {
   }
 });
 
-/*Get Data*/
-// var xValue = [];
-// $("#details tbody tr").each(function () {
-//   var arrayOfThisRow = [];
-//   var tableData = $(this).find("td");
-//   if (tableData.length > 0) {
-//     tableData.each(function () {
-//       arrayOfThisRow.push($(this).text());
-//     });
-//     xValue.push(arrayOfThisRow);
-//   }
-// });
-// console.log(xValue);
 // add objects to the TBl variable
 for (var i = 0; i < 0; i++) {
   var obj = {};
@@ -60,19 +33,19 @@ function render() {
       "<td class='creditScore' id='score'>" +
       x["Credit Score"] +
       "</td>" +
-      "<td>" +
+      "<td id='rate'>" +
       x["Interest Rate"] +
       "</td>" +
-      "<td>" +
+      "<td id='rent'>" +
       x["Monthly Rent"] +
       "</td>" +
-      "<td>" +
+      "<td id='savings'>" +
       x["Monthly Savings"] +
       "</td>" +
-      "<td>" +
+      "<td id='budget'>" +
       x["Initial Budget"] +
       "</td>" +
-      "<td>" +
+      "<td class='downPaymentPercent' id='dp'>" +
       x["DP, %"] +
       "</td>" +
       "<td>" +
@@ -131,29 +104,41 @@ function render() {
   table.innerHTML += tr;
 }
 
-// dinamically populate 4 elements into TBL
-var price = 350000;
-for (let i = 0; i < 4; i++) {
-  var newPrice = new Intl.NumberFormat("en-US", {
+//format number to currency
+function toCurrency(number) {
+  return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
     maximumSignificantDigits: Math.trunc(Math.abs(price)).toFixed().length,
-  }).format(price);
+  }).format(number);
+}
+// dinamically populate 4 elements into TBL
+var price = 350000;
+for (let i = 0; i < 4; i++) {
+  var newPrice = toCurrency(price);
   price += 50000;
   TBL.push({
     "Home Price": newPrice,
+    "Interest Rate": '<input value=""></input>',
+    "Monthly Rent": '<input value=""></input>',
+    "Monthly Savings": '<input value=""></input>',
+    "Initial Budget": '<input value=""></input>',
   });
 }
 
 render();
 
 //console.log(TBL);
+//method to display dropdown  and store selected option in TBL
+function addDropDownMenu() {
+  var target_cell_Score = document.getElementsByClassName("creditScore");
+  var target_cell_dp = document.getElementsByClassName("downPaymentPercent");
 
-function addDropDownScores() {
-  var target_cell = document.getElementsByClassName("creditScore");
-  console.log(target_cell);
-  var list = "";
-  for (let i = 0; i < target_cell.length; i++) {
+  console.log(target_cell_Score);
+  console.log(target_cell_dp);
+  let list = "";
+  let lest_dp = "";
+  for (let i = 0; i < target_cell_Score.length; i++) {
     list =
       "<select>" +
       '<option value="1">Credit Score</option>' +
@@ -163,14 +148,51 @@ function addDropDownScores() {
       '<option value="760">760-779</option>' +
       '<option value="780">780-800</option>' +
       "</select>";
-    target_cell.item(i).innerHTML = list;
-    let mySelect = target_cell.item(i).firstChild;
-    console.log(mySelect);
-    mySelect.addEventListener("change", function () {
+    lest_dp =
+      "<select>" +
+      '<option value="1">DP, %</option>' +
+      '<option value="5">5%</option>' +
+      '<option value="10">10%</option>' +
+      '<option value="15">15%</option>' +
+      '<option value="20">20%</option>' +
+      '<option value="25">25%</option>' +
+      '<option value="30">30%</option>' +
+      "</select>";
+
+    target_cell_Score.item(i).innerHTML = list;
+    target_cell_dp.item(i).innerHTML = lest_dp;
+    let mySelect_score = target_cell_Score.item(i).firstChild;
+    let mySelect_dp = target_cell_dp.item(i).firstChild;
+    mySelect_score.addEventListener("change", function () {
       TBL[i]["Credit Score"] = this.value;
       console.log(TBL);
     });
-    //target_cell.innerHTML = list;
+    mySelect_dp.addEventListener("change", function () {
+      TBL[i]["DP, %"] = this.value;
+      TBL[i]["DP, $"] = toCurrency(calcDownPayment(i));
+
+      render();
+      console.log(TBL);
+    });
   }
 }
-addDropDownScores();
+addDropDownMenu();
+
+//Calculate DP$  based on Home Price and DP% columns
+function calcDownPayment(row) {
+  let down_payment_persent = Number(TBL[row]["DP, %"]) / 100;
+  var currency = TBL[row]["Home Price"];
+  var price = toNumber(currency);
+  const down_payment = price * down_payment_persent;
+  return down_payment;
+}
+
+// convert to number
+function toNumber(str) {
+  return Number(str.replace(/[^0-9\.]+/g, ""));
+}
+
+let rate = document.getElementById("rate");
+rate.addEventListener("input", function () {
+  console.log(this.value);
+});

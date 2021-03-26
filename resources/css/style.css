@@ -440,3 +440,17 @@ select > option {
   background-color: transparent;
   color: black;
 }
+
+.downPaymentPercent {
+  font-size: 15px;
+  display: inline-block;
+
+  width: 100px;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+table td input {
+  display: block;
+  width: 100%;
+}

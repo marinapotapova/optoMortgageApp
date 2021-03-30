@@ -37,7 +37,6 @@ function render() {
       "<td class='rent'>" +
       "</td>" +
       "<td class='savings'>" +
-      x["Monthly Savings"] +
       "</td>" +
       "<td class='budget'>" +
       "</td>" +
@@ -48,7 +47,7 @@ function render() {
       x["DP, $"] +
       "</td>" +
       "<td>" +
-      x["Mon Sav"] +
+      x["Months to Save"] +
       "</td>" +
       "<td>" +
       x["Loan"] +
@@ -113,6 +112,13 @@ function render() {
     trdom.getElementsByClassName("budget")[0].appendChild(
       addNumberInput(x["Initial Budget"], function () {
         x["Initial Budget"] = toCurrency(isInt(this.value));
+
+        console.log(TBL);
+      })
+    );
+    trdom.getElementsByClassName("savings")[0].appendChild(
+      addNumberInput(x["Monthly Savings"], function () {
+        x["Monthly Savings"] = toCurrency(isInt(this.value));
 
         console.log(TBL);
       })
@@ -220,6 +226,11 @@ function addDropDownMenu() {
     mySelect_dp.addEventListener("change", function () {
       TBL[i]["DP, %"] = this.value;
       TBL[i]["DP, $"] = toCurrency(calcDownPayment(i));
+      TBL[i]["Months to Save"] = monthsToSave(
+        TBL[i]["DP, $"],
+        TBL[i]["Initial Budget"],
+        TBL[i]["Monthly Savings"]
+      );
 
       render();
       console.log(TBL);
@@ -253,7 +264,7 @@ function isFloat(num) {
 
   return result;
 }
-
+//convert number to integer
 function isInt(num) {
   let result = 0;
   if (parseInt(num)) {
@@ -262,4 +273,16 @@ function isInt(num) {
     alert("Invalid input for Monthly Rent");
   }
   return result;
+}
+
+//calculate how many months to save for downpayment
+
+function monthsToSave(dp, budget, savings) {
+  const dp_num = toNumber(dp);
+  const budget_num = toNumber(budget);
+  const savings_num = toNumber(savings);
+
+  const result = (dp_num - budget_num) / savings_num;
+
+  return result > 0 ? result : 0;
 }

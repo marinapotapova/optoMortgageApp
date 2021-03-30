@@ -23,27 +23,23 @@ for (var i = 0; i < 0; i++) {
 function render() {
   var table = document.getElementById("datas");
   table.innerHTML = "";
-  var tr = "";
   TBL.forEach((x) => {
-    tr += "<tr>";
-    tr +=
+    let trdom = document.createElement("tr");
+    let tr =
       "<td>" +
       x["Home Price"] +
       "</td>" +
       "<td class='creditScore' id='score'>" +
       x["Credit Score"] +
       "</td>" +
-      "<td id='rate'>" +
-      x["Interest Rate"] +
+      "<td class='rate'>" +
       "</td>" +
-      "<td id='rent'>" +
-      x["Monthly Rent"] +
+      "<td class='rent'>" +
       "</td>" +
-      "<td id='savings'>" +
+      "<td class='savings'>" +
       x["Monthly Savings"] +
       "</td>" +
-      "<td id='budget'>" +
-      x["Initial Budget"] +
+      "<td class='budget'>" +
       "</td>" +
       "<td class='downPaymentPercent' id='dp'>" +
       x["DP, %"] +
@@ -99,9 +95,32 @@ function render() {
       "<td>" +
       x["Overpay"] +
       "</td>";
-    tr += "</tr>";
+    trdom.innerHTML = tr;
+    trdom.getElementsByClassName("rate")[0].appendChild(
+      addNumberInput(x["Interest Rate"], function () {
+        x["Interest Rate"] = isFloat(this.value);
+        //console.log(TBL);
+      })
+    );
+
+    trdom.getElementsByClassName("rent")[0].appendChild(
+      addNumberInput(x["Monthly Rent"], function () {
+        x["Monthly Rent"] = toCurrency(isInt(this.value));
+
+        //console.log(TBL);
+      })
+    );
+    trdom.getElementsByClassName("budget")[0].appendChild(
+      addNumberInput(x["Initial Budget"], function () {
+        x["Initial Budget"] = toCurrency(isInt(this.value));
+
+        console.log(TBL);
+      })
+    );
+
+    table.appendChild(trdom);
   });
-  table.innerHTML += tr;
+  addDropDownMenu();
 }
 
 //format number to currency
@@ -109,7 +128,7 @@ function toCurrency(number) {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-    maximumSignificantDigits: Math.trunc(Math.abs(price)).toFixed().length,
+    maximumSignificantDigits: Math.trunc(Math.abs(number)).toFixed().length,
   }).format(number);
 }
 // dinamically populate 4 elements into TBL
@@ -119,14 +138,21 @@ for (let i = 0; i < 4; i++) {
   price += 50000;
   TBL.push({
     "Home Price": newPrice,
-    "Interest Rate": '<input value=""></input>',
-    "Monthly Rent": '<input value=""></input>',
-    "Monthly Savings": '<input value=""></input>',
-    "Initial Budget": '<input value=""></input>',
+    "Interest Rate": 0,
+    "Monthly Rent": 0,
+    "Monthly Savings": 0,
+    "Initial Budget": 0,
   });
 }
 
 render();
+
+function addNumberInput(val, onchange) {
+  let inp = document.createElement("input");
+  inp.setAttribute("value", val);
+  inp.addEventListener("input", onchange);
+  return inp;
+}
 
 //console.log(TBL);
 //method to display dropdown  and store selected option in TBL
@@ -136,33 +162,57 @@ function addDropDownMenu() {
 
   console.log(target_cell_Score);
   console.log(target_cell_dp);
+
   let list = "";
   let lest_dp = "";
   for (let i = 0; i < target_cell_Score.length; i++) {
     list =
       "<select>" +
       '<option value="1">Credit Score</option>' +
-      '<option value="700">700-719</option>' +
-      '<option value="720">720-739</option>' +
-      '<option value="740">740-759</option>' +
-      '<option value="760">760-779</option>' +
-      '<option value="780">780-800</option>' +
+      '<option value="700"' +
+      (TBL[i]["Credit Score"] == "700" ? "selected" : "") +
+      ">700-719</option>" +
+      '<option value="720"' +
+      (TBL[i]["Credit Score"] == "720" ? "selected" : "") +
+      ">720-739</option>" +
+      '<option value="740"' +
+      (TBL[i]["Credit Score"] == "740" ? "selected" : "") +
+      ">740-759</option>" +
+      '<option value="760"' +
+      (TBL[i]["Credit Score"] == "760" ? "selected" : "") +
+      ">760-779</option>" +
+      '<option value="780"' +
+      (TBL[i]["Credit Score"] == "780" ? "selected" : "") +
+      ">780-800</option>" +
       "</select>";
     lest_dp =
       "<select>" +
       '<option value="1">DP, %</option>' +
-      '<option value="5">5%</option>' +
-      '<option value="10">10%</option>' +
-      '<option value="15">15%</option>' +
-      '<option value="20">20%</option>' +
-      '<option value="25">25%</option>' +
-      '<option value="30">30%</option>' +
+      '<option value="5"' +
+      (TBL[i]["DP, %"] == "5" ? "selected" : "") +
+      ">5%</option>" +
+      '<option value="10"' +
+      (TBL[i]["DP, %"] == "10" ? "selected" : "") +
+      ">10%</option>" +
+      '<option value="15"' +
+      (TBL[i]["DP, %"] == "15" ? "selected" : "") +
+      ">15%</option>" +
+      '<option value="20"' +
+      (TBL[i]["DP, %"] == "20" ? "selected" : "") +
+      ">20%</option>" +
+      '<option value="25"' +
+      (TBL[i]["DP, %"] == "25" ? "selected" : "") +
+      ">25%</option>" +
+      '<option value="30"' +
+      (TBL[i]["DP, %"] == "30" ? "selected" : "") +
+      ">30%</option>" +
       "</select>";
 
     target_cell_Score.item(i).innerHTML = list;
     target_cell_dp.item(i).innerHTML = lest_dp;
     let mySelect_score = target_cell_Score.item(i).firstChild;
     let mySelect_dp = target_cell_dp.item(i).firstChild;
+
     mySelect_score.addEventListener("change", function () {
       TBL[i]["Credit Score"] = this.value;
       console.log(TBL);
@@ -176,7 +226,6 @@ function addDropDownMenu() {
     });
   }
 }
-addDropDownMenu();
 
 //Calculate DP$  based on Home Price and DP% columns
 function calcDownPayment(row) {
@@ -192,7 +241,25 @@ function toNumber(str) {
   return Number(str.replace(/[^0-9\.]+/g, ""));
 }
 
-let rate = document.getElementById("rate");
-rate.addEventListener("input", function () {
-  console.log(this.value);
-});
+// convert number to float to calculate interest rate
+function isFloat(num) {
+  let result = 0;
+  if (parseFloat(num)) {
+    result = parseFloat(num);
+    result += "%";
+  } else {
+    alert("Invalid input for Interest Rate");
+  }
+
+  return result;
+}
+
+function isInt(num) {
+  let result = 0;
+  if (parseInt(num)) {
+    result = parseInt(num);
+  } else {
+    alert("Invalid input for Monthly Rent");
+  }
+  return result;
+}
